@@ -255,7 +255,7 @@ func AttemptToAuthenticateWithOauth(c *fiber.Ctx) error {
 	}
 
 	// if c.FormValue("auth_type") == "apppassword" {
-  if true { // fix this when more auth types are added (if they exist)
+	if true { // fix this when more auth types are added (if they exist)
 		username := c.FormValue("session[username_or_email]")
 		password := c.FormValue("session[password]")
 
@@ -338,8 +338,6 @@ func OAuthAccessToken(c *fiber.Ctx) error {
 	}
 
 	tempTokens.Delete(oauthParams.Verifier)
-  
-  
 
 	if tokenData.Verifier != oauthParams.Verifier && tokenData.Verifier != c.Query("oauth_verifier") {
 		return c.Status(400).SendString("incorrect verifier, try again")
