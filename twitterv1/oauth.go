@@ -281,7 +281,7 @@ func AttemptToAuthenticateWithOauth(c *fiber.Ctx) error {
 
 			tempTokens.Store(oauth_token, tokenData)
 			c.Set("Content-Type", "text/html")
-			return c.SendString(fmt.Sprintf(`<html><body><div id="oauth_pin">%s</div></body></html>`, tokenData.Verifier))
+			return c.SendString(fmt.Sprintf(`<html><body><p>Your OAuth PIN is: <div id="oauth_pin">%s</div></p><p>Use it in the app you are trying to log into.</p></body></html>`, tokenData.Verifier))
 		} else {
 			// random base64 data
 			tokenData.Verifier = rand.Text()
